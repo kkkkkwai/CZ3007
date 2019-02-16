@@ -58,6 +58,34 @@ WhiteSpace = [ ] | \t | \f | \n | \r
 "void"      {return token(VOID);}
 "while"     {return token(WHILE);}
 
+","			{ return token(COMMA);}
+"["			{ return token(LBRACKET);}
+"{"			{ return token(LCURLY);}
+"("			{ return token(LPAREN);}
+"]"			{ return token(RBRACKET);}
+"}"			{ return token(RCURLY);}
+")"			{ return token(RPAREN);}
+";"			{ return token(SEMICOLON);}
+
+"/"		{ return token(DIV);}
+"=="	{ return token(EQEQ);}
+"="		{ return token(EQL);}
+">="	{ return token(GEQ);}
+">"		{ return token(GT);}
+"<="	{ return token(LEQ);}
+"<"		{ return token(LT);}
+"-"		{ return token(MINUS);}
+"!="	{ return token(NEQ);}
+"+"		{ return token(PLUS);}
+"*"		{ return token(TIMES);}
+
+/* Identifier */
+[a-zA-Z][a-zA-Z0-9_]*    { return token(ID);}
+
+/* Literals */
+[0-9]+                   {return token(INT_LITERAL);}
+\"[^\"]*\"               {return token(STRING_LITERAL, yytext().substring(1, yytext().length()-1));}
+
 /* Ignore whitespace */
 {WhiteSpace}+       {}
 
