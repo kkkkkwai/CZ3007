@@ -84,7 +84,7 @@ WhiteSpace = [ ] | \t | \f | \n | \r
 
 /* Literals */
 [0-9]+                   {return token(INT_LITERAL);}
-\"[^\"]*\"               {return token(STRING_LITERAL, yytext().substring(1, yytext().length()-1));}
+\"[^\"\n]*\"               {return token(STRING_LITERAL, yytext().substring(1, yytext().length()-1));}
 
 /* Ignore whitespace */
 {WhiteSpace}+       {}

@@ -71,5 +71,27 @@ public class LexerTests {
 				new Token(EOF, 0, 4, ""));
 	}
 
+	@Test
+    public void testLineFeed(){
+	    runtest("\"\n\"",
+                (Token)null, (Token)null, (Token)null,
+                new Token(EOF, 0, 4, ""));
+    }
+
+	@Test
+	public void testSimpleStatement(){
+		runtest("if a == b {return false;}",
+				new Token(IF, 0, 0, "if"),
+				new Token(ID, 0, 3, "a"),
+				new Token(EQEQ, 0, 5, "=="),
+				new Token(ID, 0,8, "b"),
+				new Token(LCURLY, 0, 10, "{"),
+				new Token(RETURN, 0, 11, "return"),
+				new Token(FALSE, 0, 18, "false"),
+				new Token(SEMICOLON, 0, 23, ";"),
+				new Token(RCURLY, 0, 24, "}"),
+                new Token(EOF, 0, 25, ""));
+	}
+
 
 }
